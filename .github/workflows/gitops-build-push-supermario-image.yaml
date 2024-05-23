@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+
+env:
+  VERSION: $(( $(cat version.txt) + 1 ))
+
 jobs:
 
   build_push_supermario_docker_image:
@@ -19,6 +23,6 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t sonarbuild:1.0 .
-          docker tag sonarbuild:1.0 shubhasisacr.azurecr.io/sonarbuild:1.0
-          docker push shubhasisacr.azurecr.io/sonarbuild:1.0
+          docker build -t sonarbuild:${{ env.VERSION }} .
+          docker tag sonarbuild:${{ env.VERSION }} shubhasisacr.azurecr.io/sonarbuild:${{ env.VERSION }}
+          docker push shubhasisacr.azurecr.io/sonarbuild:${{ env.VERSION }}

@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
- 
+
+env:
+  VERSION: $(( $(cat version.txt) + 1 ))
+      
   
 jobs:
   
@@ -20,8 +23,8 @@ jobs:
         
       - name: Get Docker Image from ACR
         run: |
-          docker pull shubhasisacr.azurecr.io/sonarbuild:1.0
-          docker save -o supermariolatestdockerimage.tar shubhasisacr.azurecr.io/sonarbuild:1.0
+          docker pull shubhasisacr.azurecr.io/sonarbuild:${{ env.VERSION }}
+          docker save -o supermariolatestdockerimage.tar shubhasisacr.azurecr.io/sonarbuild:${{ env.VERSION }}
      
       - name: Run Trivy vulnerability scanner in tarball mode
         uses: aquasecurity/trivy-action@master
