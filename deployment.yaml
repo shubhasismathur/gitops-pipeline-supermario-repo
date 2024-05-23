@@ -13,7 +13,7 @@ spec:
         app: supermariogame
     spec:
       containers:
-      - image: shubhasisacr.azurecr.io/sonarbuild:1.0
+      - image: shubhasisacr.azurecr.io/sonarbuild:2
         name: supermariogame-container
         ports:
         - containerPort: 8080
