@@ -1,0 +1,23 @@
+name: "Build and push Super Mario Docker image with static tag to Docker Hub"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build_push_supermario_docker_image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        run: az acr login --name shubhasisacr.azurecr.io
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t sonarbuild:1.0 .
+          docker push shubhasisacr.azurecr.io/sonarbuild:1.0
