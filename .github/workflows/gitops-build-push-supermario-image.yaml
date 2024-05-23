@@ -20,5 +20,5 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           docker build -t sonarbuild:1.0 .
-          docker tag sonarbuild shubhasisacr.azurecr.io/sonarbuild:1.0
+          docker tag sonarbuild:1.0 shubhasisacr.azurecr.io/sonarbuild:1.0
           docker push shubhasisacr.azurecr.io/sonarbuild:1.0
