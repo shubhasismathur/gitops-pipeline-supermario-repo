@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myghworkflow
+  labels:
+    app: myghworkflow
+  namespace: namespace-workflow-1716487752974
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myghworkflow
+  template:
+    metadata:
+      labels:
+        app: myghworkflow
+    spec:
+      containers:
+        - name: myghworkflow
+          image: acrworkflow1716487752974.azurecr.io/image-workflow-1716487752974:latest
+          ports:
+            - containerPort: 3000
