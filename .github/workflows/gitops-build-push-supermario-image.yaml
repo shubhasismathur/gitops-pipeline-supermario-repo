@@ -1,9 +1,9 @@
 name: "Build and push Super Mario Docker image with static tag to Docker Hub"
 
-#on:
-#  push:
-#    branches:
-#      - main
+on:
+  push:
+    branches:
+      - test
 
 
 env:
@@ -25,4 +25,4 @@ jobs:
         run: |
           docker build -t sonarbuild:${{ env.VERSION }} .
           docker tag sonarbuild:${{ env.VERSION }} shubhasisacr.azurecr.io/sonarbuild:${{ env.VERSION }}
-          docker push shubhasisacr.azurecr.io/sonarbuild:${{ env.VERSION }}
+          docker push shubhasisacr.azurecr.io/sonarbuild:1.0
